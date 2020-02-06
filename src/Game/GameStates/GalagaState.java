@@ -89,7 +89,7 @@ public class GalagaState extends State {
 
         }
         if (Mode.equals("Stage")) {
-            g.setColor(Color.RED);
+            g.setColor(Color.MAGENTA);
             g.setFont(new Font("TimesRoman", Font.PLAIN, 62));
             g.drawString("HIGH",handler.getWidth()-handler.getWidth()/4,handler.getHeight()/16);
             g.drawString("SCORE",handler.getWidth()-handler.getWidth()/4+handler.getWidth()/48,handler.getHeight()/8);
@@ -102,14 +102,14 @@ public class GalagaState extends State {
                 entityManager.render(g);
             }else{
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 48));
-                g.setColor(Color.RED);
+                g.setColor(Color.MAGENTA);
                 g.drawString("Start",handler.getWidth()/2-handler.getWidth()/18,handler.getHeight()/2);
             }
         }else{
 
             g.setFont(new Font("TimesRoman", Font.PLAIN, 32));
 
-            g.setColor(Color.RED);
+            g.setColor(Color.MAGENTA);
             g.drawString("HIGH-SCORE:",handler.getWidth()/2-handler.getWidth()/18,32);
 
             g.setColor(Color.WHITE);
