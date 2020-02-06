@@ -53,6 +53,18 @@ public class PlayerShip extends BaseEntity{
                 handler.getGalagaState().entityManager.entities.add(new PlayerLaser(this.x + (width / 2), this.y - 3, width / 5, height / 2, Images.galagaPlayerLaser, handler, handler.getGalagaState().entityManager));
 
             }
+            //N button is added. It destroys the ship.
+            
+            if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)){
+            	destroyed=true;
+            	health--;
+            }  
+        //N button is added. It destroys the ship.
+        
+        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_M) && health <3){
+        	health++;
+        	
+        }
             if (handler.getKeyManager().left) {
                 x -= (speed);
             }

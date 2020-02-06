@@ -13,7 +13,8 @@ public class KeyManager implements KeyListener {
 	private boolean[] keys,justPressed,cantPress;
 	public boolean up=false, down=false, left=false, right=false;
 	public boolean pausebutt=false;
-
+	public boolean nbutt=false;
+	public boolean mbutt=false;
 
 	public KeyManager(){
 
@@ -41,6 +42,11 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN];
 		left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
+	
+		//N button was added to destroy the ship.
+		//M button added to ADD a live if there is less than 3
+		nbutt=keys[KeyEvent.VK_N];
+		mbutt=keys[KeyEvent.VK_M];
 
 		pausebutt = keys[KeyEvent.VK_ESCAPE];
 
