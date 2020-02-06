@@ -57,14 +57,14 @@ public class GalagaState extends State {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Color.CYAN);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
         g.setColor(Color.BLACK);
         g.fillRect(handler.getWidth()/4,0,handler.getWidth()/2,handler.getHeight());
         Random random = new Random(System.nanoTime());
 
         for (int j = 1;j < random.nextInt(15)+60;j++) {
-            switch (random.nextInt(4)) {
+            switch (random.nextInt(6)) {
                 case 0:
                     g.setColor(Color.RED);
                     break;
@@ -76,6 +76,12 @@ public class GalagaState extends State {
                     break;
                 case 3:
                     g.setColor(Color.GREEN);
+                    break;
+                case 4:
+                    g.setColor(Color.WHITE);
+                    break;
+                case 5:
+                    g.setColor(Color.MAGENTA);
             }
             int randX = random.nextInt(handler.getWidth() - handler.getWidth() / 2) + handler.getWidth() / 4;
             int randY = random.nextInt(handler.getHeight());
