@@ -14,7 +14,8 @@ public class KeyManager implements KeyListener {
 	public boolean up=false, down=false, left=false, right=false;
 	public boolean pausebutt=false;
 	public boolean nbutt=false;
-	public boolean mbutt=false;
+	public boolean ubutt=false;
+	public boolean pbutt=false;
 
 	public KeyManager(){
 
@@ -44,9 +45,11 @@ public class KeyManager implements KeyListener {
 		right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
 	
 		//N button was added to destroy the ship.
-		//M button added to ADD a live if there is less than 3
+		//U button added to ADD a live if there is less than 3
+		//P button added to spawn the bees.
 		nbutt=keys[KeyEvent.VK_N];
-		mbutt=keys[KeyEvent.VK_M];
+		ubutt=keys[KeyEvent.VK_U];
+		pbutt=keys[KeyEvent.VK_P];
 
 		pausebutt = keys[KeyEvent.VK_ESCAPE];
 

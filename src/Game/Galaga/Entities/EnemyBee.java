@@ -5,6 +5,7 @@ import Resources.Animation;
 import Resources.Images;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class EnemyBee extends BaseEntity {
@@ -29,6 +30,7 @@ public class EnemyBee extends BaseEntity {
         formationY=(row*(handler.getHeight()/10))+8;
     }
 
+    	
     private void spawn() {
         spawnPos = random.nextInt(4);
         switch (spawnPos){
@@ -152,6 +154,7 @@ public class EnemyBee extends BaseEntity {
         }
         bounds.x=x;
         bounds.y=y;
+     	
     }
 
     @Override
