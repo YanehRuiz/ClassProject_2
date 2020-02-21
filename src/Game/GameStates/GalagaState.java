@@ -103,7 +103,7 @@ public class GalagaState extends State {
             g.drawString(String.valueOf(handler.getScoreManager().getGalagaCurrentScore()),handler.getWidth()/2-320,50);
 
             for (int i = 0; i< entityManager.playerShip.getHealth();i++) {
-                g.drawImage(Images.galagaPlayer[0], (handler.getWidth() - handler.getWidth() / 4 + handler.getWidth() / 60) + ((entityManager.playerShip.width*2)*i), handler.getHeight()-handler.getHeight()/4, handler.getWidth() / 18, handler.getHeight() / 11, null);
+                g.drawImage(Images.galagaPlayer[0], (handler.getWidth()/ 4 + handler.getWidth() / 100) + ((entityManager.playerShip.width*1)*i), handler.getHeight()-handler.getHeight()/15, handler.getWidth() / 28, handler.getHeight() / 21, null);
             }
             if (startCooldown<=0) {
                 entityManager.render(g);

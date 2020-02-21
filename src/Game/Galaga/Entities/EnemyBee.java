@@ -178,5 +178,11 @@ public class EnemyBee extends BaseEntity {
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
         }
+        if (timeAlive < 60*60*2 && hit == true) {
+        	handler.getScoreManager().addGalagaCurrentScore(100);
+            if(handler.getScoreManager().getGalagaCurrentScore() > handler.getScoreManager().getGalagaHighScore()) {
+            	handler.getScoreManager().setGalagaHighScore(handler.getScoreManager().getGalagaCurrentScore());
+            }
+        }	
     }
 }

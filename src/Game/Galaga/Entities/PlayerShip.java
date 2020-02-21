@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.BEncoderStream;
+//import com.sun.xml.internal.messaging.saaj.packaging.mime.util.BEncoderStream;
 
 /**
  * Created by AlexVR on 1/25/2020
@@ -90,7 +90,7 @@ public class PlayerShip extends BaseEntity{
 			int ra = 3;
 			int rb = 4;
 			int rc = random.nextBoolean() ? ra : rb;
-
+			
 			//P button is added. It spawns the bees when pressed.
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
 				handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler,rc, c1 ));
@@ -134,11 +134,13 @@ public class PlayerShip extends BaseEntity{
 		if (damageSource instanceof PlayerLaser){
 			return;
 		}
-		health--;
+		if (destroyedCoolDown == 60*7){				//stops line 138 from reaching -45 in the health counter.
+		health--;								
 		destroyed = true;
 		handler.getMusicHandler().playEffect("explosion.wav");
 
 		bounds.x = -10;
+		}
 	}
 
 	public int getHealth() {
