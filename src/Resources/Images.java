@@ -40,7 +40,7 @@ public class Images {
         pauseToTitleButton = new BufferedImage[2];
         pauseOptionsButton = new BufferedImage[2];
         galagaLogo = new BufferedImage[3];
-        galagaNewLogo = new BufferedImage[2];
+        galagaNewLogo = new BufferedImage[4];
         galagaPlayer = new BufferedImage[8];//not full yet, only has second to last image on sprite sheet
         galagaPlayerDeath = new BufferedImage[8];
         galagaEnemyDeath = new BufferedImage[5];
@@ -80,13 +80,17 @@ public class Images {
 
             galagaImageSheet = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Galaga/Galaga.png"));
             galagaSpriteSheet = new SpriteSheet(galagaImageSheet);
-            galagaNIcon = ImageIO.read(getClass().getResourceAsStream("/UI/Misc/GalagaNewCon"));
+            galagaNIcon = ImageIO.read(getClass().getResourceAsStream("/UI/Misc/GalagaNewCon.png"));
             galagaNew = new SpriteSheet(galagaNIcon);
 
             galagaPlayer[0] = galagaSpriteSheet.crop(160,55,15,16);
             
             galagaNewLogo[0] = galagaNew.crop(0, 0, 140, 70);
-            galagaNewLogo[1] = galagaNew.crop(70, 0, 140, 70);
+            galagaNewLogo[1] = galagaNew.crop(0, 0, 140, 70);
+            galagaNewLogo[2] = galagaNew.crop(140, 0, 140, 70);
+            galagaNewLogo[3] = galagaNew.crop(140, 0, 140, 70);
+
+            
 
             galagaPlayerDeath[0] = galagaSpriteSheet.crop(209,48,32,32);
             galagaPlayerDeath[1] = galagaSpriteSheet.crop(209,48,32,32);
