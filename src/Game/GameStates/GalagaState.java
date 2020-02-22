@@ -1,5 +1,6 @@
 package Game.GameStates;
 
+import Game.Galaga.Entities.EnemyBee;
 import Game.Galaga.Entities.EntityManager;
 import Game.Galaga.Entities.PlayerShip;
 import Main.Handler;
@@ -20,6 +21,9 @@ public class GalagaState extends State {
     private Animation titleAnimation;
     public int selectPlayers = 1;
     public int startCooldown = 60*7;//seven seconds for the music to finish
+    int BeeCount = 0;
+    boolean BeePlace[][] = new boolean[9][9];
+    Random random = new Random();
 
     public GalagaState(Handler handler){
         super(handler);
@@ -34,7 +38,25 @@ public class GalagaState extends State {
         if (Mode.equals("Stage")){
             if (startCooldown<=0) {
                 entityManager.tick();
-            }else{
+                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
+                    while(true){
+            			int c1= (int) random.nextInt(8);
+            			int ra = 3;
+            			int rb = 4;
+            			int rc = random.nextBoolean() ? ra : rb;
+                        if(BeeCount < 16){
+                        if (!BeePlace[rc][c1]){
+                        	BeePlace[rc][c1] = true;
+                            handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler, rc, c1));
+                            BeeCount++;
+                            break;
+                        }
+                        }else{
+                            break;
+                        }
+                        }
+            }
+                }else{
                 startCooldown--;
             }
         }else{
@@ -52,6 +74,7 @@ public class GalagaState extends State {
 
 
         }
+            
 
     }
 

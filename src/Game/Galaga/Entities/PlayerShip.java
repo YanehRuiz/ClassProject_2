@@ -67,39 +67,6 @@ public class PlayerShip extends BaseEntity{
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_U) && health <3){
 				health++;
 			}
-
-
-//			int[][] cr = new int[2][8];{
-//
-//				for(int i=0; i<2; i++) {
-//					for(int j=0; j<9; j++) {
-//
-//						if(cr[i][j] == 0){
-//							occupied=true;
-//							break; 
-//
-//						}else{
-//							continue; 				
-//
-//						}	
-//					}
-//				}
-//			}
-
-			int c1= (int) random.nextInt(8);
-			int ra = 3;
-			int rb = 4;
-			int rc = random.nextBoolean() ? ra : rb;
-			
-			//P button is added. It spawns the bees when pressed.
-			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
-				handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler,rc, c1 ));
-			}
-
-			//Hacer un array doble dimension (i,j) que devuelva true si el array 
-			//no encuentra a alguien en esa columna / fila. False si ya hay alguien.
-
-
 		}
 
 
