@@ -91,6 +91,7 @@ public class PlayerShip extends BaseEntity{
 	public void render(Graphics g) {
 		if (destroyed){
 			if (deathAnimation.end){
+				g.setColor(Color.MAGENTA);
 				g.drawString("READY",handler.getWidth()/2-handler.getWidth()/12,handler.getHeight()/2);
 			}else {
 				g.drawImage(deathAnimation.getCurrentFrame(), x, y, width, height, null);

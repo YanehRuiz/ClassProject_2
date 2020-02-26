@@ -22,6 +22,7 @@ public class Images {
     public static BufferedImage galagaPlayerLaser;
     public static BufferedImage[] startGameButton;
     public static BufferedImage[] galagaLogo;
+    public static BufferedImage[] galagaNewLogo;
     public static BufferedImage[] pauseResumeButton;
     public static BufferedImage[] pauseToTitleButton;
     public static BufferedImage[] pauseOptionsButton;
@@ -35,6 +36,9 @@ public class Images {
     public SpriteSheet galagaSpriteSheet;
     public SpriteSheet galagaDSpriteSheet;
     
+    public static BufferedImage NewGalagaLogo;
+    public SpriteSheet NGLSheet;
+    
 
 
     public Images() {
@@ -45,6 +49,7 @@ public class Images {
         pauseToTitleButton = new BufferedImage[2];
         pauseOptionsButton = new BufferedImage[2];
         galagaLogo = new BufferedImage[3];
+        galagaNewLogo = new BufferedImage[4];
         galagaPlayer = new BufferedImage[8];//not full yet, only has second to last image on sprite sheet
         galagaPlayerDeath = new BufferedImage[8];
         galagaEnemyDeath = new BufferedImage[5];
@@ -88,6 +93,8 @@ public class Images {
 
             galagaImageSheet = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Galaga/Galaga.png"));
             galagaSpriteSheet = new SpriteSheet(galagaImageSheet);
+            NewGalagaLogo = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Galaga/GalagaJVEd01.png"));
+            NGLSheet = new SpriteSheet(NewGalagaLogo);
 
             galagaPlayer[0] = galagaSpriteSheet.crop(160,55,15,16);
 
@@ -114,6 +121,11 @@ public class Images {
             galagaEnemyBee[5] = galagaSpriteSheet.crop(65,176,13,14);
             galagaEnemyBee[6] = galagaSpriteSheet.crop(42,178,12,11);
             galagaEnemyBee[7] = galagaSpriteSheet.crop(19,177,10,13);
+            
+            galagaNewLogo[0] = NGLSheet.crop(0, 0, 110, 56);
+            galagaNewLogo[1] = NGLSheet.crop(0, 0, 110, 56);
+            galagaNewLogo[2] = NGLSheet.crop(110, 0, 110, 56);
+            galagaNewLogo[3] = NGLSheet.crop(110, 0, 110, 56);
 
             galagaEnemyDragonfly[0] = galagaDSpriteSheet.crop(0,0,13,14);
             galagaEnemyDragonfly[1] = galagaDSpriteSheet.crop(13,0,13,14);
