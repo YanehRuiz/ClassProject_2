@@ -16,6 +16,7 @@ public class KeyManager implements KeyListener {
 	public boolean nbutt=false;
 	public boolean ubutt=false;
 	public boolean pbutt=false;
+	public boolean obutt=false;
 
 	public KeyManager(){
 
@@ -50,6 +51,7 @@ public class KeyManager implements KeyListener {
 		nbutt=keys[KeyEvent.VK_N];
 		ubutt=keys[KeyEvent.VK_U];
 		pbutt=keys[KeyEvent.VK_P];
+		obutt=keys[KeyEvent.VK_O];
 
 		pausebutt = keys[KeyEvent.VK_ESCAPE];
 

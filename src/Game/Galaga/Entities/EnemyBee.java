@@ -26,7 +26,7 @@ public class EnemyBee extends BaseEntity {
         turn90Left = new Animation(128,Images.galagaEnemyBee);
         spawn();
         speed = 4;
-        formationX=(handler.getWidth()/4)+(col*((handler.getWidth()/2)/8))+8;
+        formationX=(handler.getWidth()/4)+(col*((handler.getWidth()/2)/10))+24;
         formationY=(row*(handler.getHeight()/10))+8;
     }
 

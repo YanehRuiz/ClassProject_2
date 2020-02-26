@@ -1,6 +1,9 @@
 package Resources;
 
 import javax.imageio.ImageIO;
+
+import Game.Galaga.Entities.EnemyDragonfly;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -26,12 +29,17 @@ public class Images {
     public static BufferedImage[] galagaPlayerDeath;
     public static BufferedImage[] galagaEnemyDeath;
     public static BufferedImage[] galagaEnemyBee;
-
+    public static BufferedImage[] galagaEnemyDragonfly;
+    public static BufferedImage galagaEnemyDDragonfly;
     public static BufferedImage galagaImageSheet;
     public SpriteSheet galagaSpriteSheet;
+    public SpriteSheet galagaDSpriteSheet;
+    
+
 
     public Images() {
 
+    	
         startGameButton = new BufferedImage[3];
         pauseResumeButton = new BufferedImage[2];
         pauseToTitleButton = new BufferedImage[2];
@@ -41,6 +49,7 @@ public class Images {
         galagaPlayerDeath = new BufferedImage[8];
         galagaEnemyDeath = new BufferedImage[5];
         galagaEnemyBee = new BufferedImage[8];
+        galagaEnemyDragonfly= new BufferedImage[2];
 
 
         try {
@@ -60,6 +69,9 @@ public class Images {
             galagaSelect = ImageIO.read(getClass().getResourceAsStream("/UI/Misc/galaga_select.png"));
 
             muteIcon = ImageIO.read(getClass().getResourceAsStream("/UI/Misc/mute.png"));
+            
+            galagaEnemyDDragonfly = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Galaga/EnemyDragonfly.png"));           
+            galagaDSpriteSheet = new SpriteSheet(galagaEnemyDDragonfly);
 
             galagaLogo[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Misc/galaga_logo.png"));
             galagaLogo[1] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/hover_galaga_logo.png"));
@@ -103,8 +115,10 @@ public class Images {
             galagaEnemyBee[6] = galagaSpriteSheet.crop(42,178,12,11);
             galagaEnemyBee[7] = galagaSpriteSheet.crop(19,177,10,13);
 
+            galagaEnemyDragonfly[0] = galagaDSpriteSheet.crop(0,0,13,14);
+            galagaEnemyDragonfly[1] = galagaDSpriteSheet.crop(13,0,13,14);
 
-            galagaPlayerLaser = galagaSpriteSheet.crop(365 ,219,3,8);
+            galagaPlayerLaser = galagaSpriteSheet.crop(365,219,3,8);
 
 
 

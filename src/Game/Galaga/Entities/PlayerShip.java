@@ -69,12 +69,16 @@ public class PlayerShip extends BaseEntity{
 			}
 		}
 
-
+		//if statements limit the player movement to the screen bounds
 		if (handler.getKeyManager().left) {
-			x -= (speed);
+			if((x - 24) > handler.getWidth()/4) {
+				x -= (speed);
+			}
 		}
 		if (handler.getKeyManager().right) {
-			x += (speed);
+			if((x + 88) < (handler.getWidth()-handler.getWidth()/4)) {
+				x += (speed);
+			}
 		}
 
 		bounds.x = x;
@@ -102,11 +106,11 @@ public class PlayerShip extends BaseEntity{
 			return;
 		}
 		if (destroyedCoolDown == 60*7){				//stops line 138 from reaching -45 in the health counter.
-		health--;								
-		destroyed = true;
-		handler.getMusicHandler().playEffect("explosion.wav");
+			health--;								
+			destroyed = true;
+			handler.getMusicHandler().playEffect("explosion.wav");
 
-		bounds.x = -10;
+			bounds.x = -10;
 		}
 	}
 
