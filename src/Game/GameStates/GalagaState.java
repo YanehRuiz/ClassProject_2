@@ -26,7 +26,7 @@ public class GalagaState extends State {
 	public int startCooldown = 60*7;//seven seconds for the music to finish
 	public int BeeCount = 0;
 	public int DragonflyCount = 0;
-	boolean BeePlace[][] = new boolean[10][10];
+	public boolean BeePlace[][] = new boolean[10][10];
 	boolean DragonflyPlace[][] = new boolean[20][20];
 	Random random = new Random();
 
