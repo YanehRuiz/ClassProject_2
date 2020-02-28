@@ -9,7 +9,8 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class EnemyBee extends BaseEntity {
-    int row,col;//row 3-4, col 0-7
+	public int row;//row 3-4, col 0-7
+	public int col;
     boolean justSpawned=true,attacking=false, positioned=false,hit=false,centered = false;
     Animation idle,turn90Left;
     int spawnPos;//0 is left 1 is top, 2 is right, 3 is bottom
@@ -175,10 +176,13 @@ public class EnemyBee extends BaseEntity {
         super.damage(damageSource);
         if (damageSource instanceof PlayerLaser){
             hit=true;
+           
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
         }
-        if (timeAlive < 60*60*2 && hit == true) {
+        if (timeAlive < 60*60*2 && hit == true) { 
+        	handler.getGalagaState().BeePlace[row][col]=false;
+            handler.getGalagaState().BeeCount--;
         	handler.getScoreManager().addGalagaCurrentScore(100);
             if(handler.getScoreManager().getGalagaCurrentScore() > handler.getScoreManager().getGalagaHighScore()) {
             	handler.getScoreManager().setGalagaHighScore(handler.getScoreManager().getGalagaCurrentScore());
