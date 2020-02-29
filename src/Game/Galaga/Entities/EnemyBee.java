@@ -16,6 +16,8 @@ public class EnemyBee extends BaseEntity {
     int spawnPos;//0 is left 1 is top, 2 is right, 3 is bottom
     int formationX,formationY,speed,centerCoolDown=60;
     int timeAlive=0;
+    int attackCooldown = random.nextInt(10)*100;
+    int newPos;
     public EnemyBee(int x, int y, int width, int height, Handler handler,int row, int col) {
         super(x, y, width, height, Images.galagaEnemyBee[0], handler);
         this.row = row;
@@ -160,6 +162,19 @@ public class EnemyBee extends BaseEntity {
                 }
             }
         }else if (positioned){
+        	attacking = true;
+            if(attacking) {
+                if(Point.distance(formationX, formationY,handler.getGalagaState().entityManager.playerShip.x-1,handler.getGalagaState().entityManager.playerShip.y) == speed  || Point.distance(formationX,formationY,handler.getGalagaState().entityManager.playerShip.x-1,handler.getGalagaState().entityManager.playerShip.y) != speed) {
+                newPos = random.nextInt(3);
+                if((formationY != handler.getGalagaState().entityManager.playerShip.y)) {
+                    attackCooldown --;
+                    if (attackCooldown <= 0) {
+                        y += (speed * random.nextInt(10))/20;
+                        y = y + 1;
+                    }
+                }
+                }
+            }
 
         }else if (attacking){
 
