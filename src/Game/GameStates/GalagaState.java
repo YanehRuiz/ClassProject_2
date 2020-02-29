@@ -72,43 +72,39 @@ public class GalagaState extends State {
 		if (Mode.equals("Stage")){
 			if (startCooldown<=0) {
 				entityManager.tick();
-				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
+				if (BeeCount < 20 || handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) {
 					while(true){
 						int c1= (int) random.nextInt(10);
 						int ra = 3;
 						int rb = 4;
 						int rc = random.nextBoolean() ? ra : rb;
-						if(BeeCount < 20){
-							if (!BeePlace[rc][c1]){
+													if (!BeePlace[rc][c1]){
 								BeePlace[rc][c1] = true;
 								handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler, rc, c1));
 
 								BeeCount++;
 								break;
 							}
-						}else{
-							break;
-						}
+
 					}
 
 				}
-				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_O)) {
+				if ((DragonflyCount < 20 || handler.getKeyManager().keyJustPressed(KeyEvent.VK_O))) {
 					while(true){
 						int c2= (int) random.nextInt(10);
 						int rd = (int) random.nextInt(3);
 						if(rd<1) {
 							rd+=1;}
-						if(DragonflyCount < 20){
+						
 							if (!DragonflyPlace[rd][c2]){
 								DragonflyPlace[rd][c2] = true;
 								handler.getGalagaState().entityManager.entities.add(new EnemyDragonfly(0, 0, 32, 32, handler, rd, c2));
 								DragonflyCount++;
 								break;
 							}
-						}else{
-							break;
+						
 						}
-					}
+					
 				}
 
 			}else{

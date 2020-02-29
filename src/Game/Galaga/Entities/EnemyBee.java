@@ -165,7 +165,6 @@ public class EnemyBee extends BaseEntity {
         	attacking = true;
             if(attacking) {
                 if(Point.distance(formationX, formationY,handler.getGalagaState().entityManager.playerShip.x-1,handler.getGalagaState().entityManager.playerShip.y) == speed  || Point.distance(formationX,formationY,handler.getGalagaState().entityManager.playerShip.x-1,handler.getGalagaState().entityManager.playerShip.y) != speed) {
-                newPos = random.nextInt(3);
                 if((formationY != handler.getGalagaState().entityManager.playerShip.y)) {
                     attackCooldown --;
                     if (attackCooldown <= 0) {
@@ -205,12 +204,7 @@ public class EnemyBee extends BaseEntity {
            
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
-        }
-//        if (timeAlive < 60*60*2 && hit == true) { 
-//        	handler.getGalagaState().BeePlace[row][col]=false;
-//            handler.getGalagaState().BeeCount--;
-//        	
-//            }
+                   }
         }	
     }
 
