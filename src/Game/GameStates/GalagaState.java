@@ -10,6 +10,7 @@ import Resources.Images;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -17,8 +18,6 @@ import java.util.Random;
  */
 public class GalagaState extends State {
 
-	
-	
 	public EntityManager entityManager;
 	public String Mode = "Menu";
 	private Animation titleAnimation;
@@ -28,7 +27,7 @@ public class GalagaState extends State {
 	public int DragonflyCount = 0;
 	public boolean InitialSpawn= false ;
 	public boolean BeePlace[][] = new boolean[10][10];
-	boolean DragonflyPlace[][] = new boolean[10][10];
+	public boolean DragonflyPlace[][] = new boolean[20][20];
 	//public ArrayList<Integer> BeeP = new ArrayList<Integer>();
 	Random random = new Random();
 
@@ -43,41 +42,33 @@ public class GalagaState extends State {
 	public void OpeningSpawn() {
 		for(int x=0; x<10; x++){
 			for(int y=1; y<5; y++){
-				//if (BeePlace[x][y] == false){
+				if (BeePlace[y][x] == false){
 					if( y >= 3){
 						handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler, y, x));
-						if(BeePlace[y][x]==false) {
-						BeePlace[y][x] = true;
-						}
 						BeeCount=20;
-
-
+						BeePlace[y][x] = true;
+						
 					}
 					else {
-						handler.getGalagaState().entityManager.entities.add(new EnemyDragonfly(0, 0, 32, 32, handler, y, x));
-						DragonflyCount=20;
-						if(DragonflyPlace[x][y]==false) {
-						DragonflyPlace[x][y] = true;
-						}
-
-					}
-			}
-
-			{
-				
+					
+								handler.getGalagaState().entityManager.entities.add(new EnemyDragonfly(0, 0, 32, 32, handler, y, x));
+								DragonflyCount=20;
+								DragonflyPlace[y][x] = true;
+						
+					
 			}
 		}
 	}
+		}}
 
 	//Bee is randomized with the P button.
 	@Override
 	public void tick() {
-		
+
 		if(!InitialSpawn){
 			OpeningSpawn();
 			InitialSpawn= true;
 		}
-		
 		if (Mode.equals("Stage")){
 			if (startCooldown<=0) {
 				entityManager.tick();
@@ -88,9 +79,10 @@ public class GalagaState extends State {
 						int rb = 4;
 						int rc = random.nextBoolean() ? ra : rb;
 						if(BeeCount < 20){
-							if (BeePlace[rc][c1]==false){
+							if (!BeePlace[rc][c1]){
 								BeePlace[rc][c1] = true;
 								handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler, rc, c1));
+
 								BeeCount++;
 								break;
 							}
@@ -118,9 +110,11 @@ public class GalagaState extends State {
 						}
 					}
 				}
+
 			}else{
 				startCooldown--;
 			}
+
 		}else{
 			titleAnimation.tick();
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
@@ -134,12 +128,10 @@ public class GalagaState extends State {
 
 			}
 
-
 		}
-
-
-
 	}
+
+
 
 	@Override
 	public void render(Graphics g) {
@@ -227,9 +219,9 @@ public class GalagaState extends State {
 
 	@Override
 	public void refresh() {
-		
 
 
 
 	}
+
 }

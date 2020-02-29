@@ -61,7 +61,13 @@ public class EnemyDragonfly extends BaseEntity {
         if (hit){
             if (enemyDeath.end){
                 remove = true;
+                if (timeAlive < 60*60*2) {
+                	handler.getScoreManager().addGalagaCurrentScore(100);
+                    if(handler.getScoreManager().getGalagaCurrentScore() > handler.getScoreManager().getGalagaHighScore()) {
+                    	handler.getScoreManager().setGalagaHighScore(handler.getScoreManager().getGalagaCurrentScore());
                 return;
+            }
+                }
             }
             enemyDeath.tick();
         }
@@ -177,13 +183,9 @@ public class EnemyDragonfly extends BaseEntity {
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
         }
-        if (timeAlive < 60*60*2 && hit == true) {
-        	handler.getScoreManager().addGalagaCurrentScore(100);
-            if(handler.getScoreManager().getGalagaCurrentScore() > handler.getScoreManager().getGalagaHighScore()) {
-            	handler.getScoreManager().setGalagaHighScore(handler.getScoreManager().getGalagaCurrentScore());
-            }
+        if (timeAlive < 60*60*2 && hit == true) { 
+        	handler.getGalagaState().DragonflyPlace[row][col]=false;
+            handler.getGalagaState().DragonflyCount--;
         }	
     }
-
-	
-}
+        }
