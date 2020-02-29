@@ -26,8 +26,10 @@ public class GalagaState extends State {
 	public int startCooldown = 60*7;//seven seconds for the music to finish
 	public int BeeCount = 0;
 	public int DragonflyCount = 0;
+	public boolean InitialSpawn= false ;
 	public boolean BeePlace[][] = new boolean[10][10];
-	boolean DragonflyPlace[][] = new boolean[20][20];
+	boolean DragonflyPlace[][] = new boolean[10][10];
+	//public ArrayList<Integer> BeeP = new ArrayList<Integer>();
 	Random random = new Random();
 
 	public GalagaState(Handler handler){
@@ -37,9 +39,45 @@ public class GalagaState extends State {
 		titleAnimation = new Animation(256,Images.galagaNewLogo);
 	}
 
+
+	public void OpeningSpawn() {
+		for(int x=0; x<10; x++){
+			for(int y=1; y<5; y++){
+				//if (BeePlace[x][y] == false){
+					if( y >= 3){
+						handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler, y, x));
+						if(BeePlace[y][x]==false) {
+						BeePlace[y][x] = true;
+						}
+						BeeCount=20;
+
+
+					}
+					else {
+						handler.getGalagaState().entityManager.entities.add(new EnemyDragonfly(0, 0, 32, 32, handler, y, x));
+						DragonflyCount=20;
+						if(DragonflyPlace[x][y]==false) {
+						DragonflyPlace[x][y] = true;
+						}
+
+					}
+			}
+
+			{
+				
+			}
+		}
+	}
+
 	//Bee is randomized with the P button.
 	@Override
 	public void tick() {
+		
+		if(!InitialSpawn){
+			OpeningSpawn();
+			InitialSpawn= true;
+		}
+		
 		if (Mode.equals("Stage")){
 			if (startCooldown<=0) {
 				entityManager.tick();
@@ -50,7 +88,7 @@ public class GalagaState extends State {
 						int rb = 4;
 						int rc = random.nextBoolean() ? ra : rb;
 						if(BeeCount < 20){
-							if (!BeePlace[rc][c1]){
+							if (BeePlace[rc][c1]==false){
 								BeePlace[rc][c1] = true;
 								handler.getGalagaState().entityManager.entities.add(new EnemyBee(0, 0, 32, 32, handler, rc, c1));
 								BeeCount++;
@@ -189,6 +227,7 @@ public class GalagaState extends State {
 
 	@Override
 	public void refresh() {
+		
 
 
 
