@@ -62,6 +62,10 @@ public class EnemyBee extends BaseEntity {
         idle.tick();
         if (hit){
             if (enemyDeath.end){
+                
+                	handler.getGalagaState().BeePlace[row][col]=false;
+                    handler.getGalagaState().BeeCount--;                	
+                    
                 remove = true;
                 if (timeAlive < 60*60*2) {
                 	handler.getScoreManager().addGalagaCurrentScore(100);
@@ -187,11 +191,11 @@ public class EnemyBee extends BaseEntity {
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
         }
-        if (timeAlive < 60*60*2 && hit == true) { 
-        	handler.getGalagaState().BeePlace[row][col]=false;
-            handler.getGalagaState().BeeCount--;
-        	
-            }
+//        if (timeAlive < 60*60*2 && hit == true) { 
+//        	handler.getGalagaState().BeePlace[row][col]=false;
+//            handler.getGalagaState().BeeCount--;
+//        	
+//            }
         }	
     }
 

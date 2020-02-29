@@ -60,6 +60,10 @@ public class EnemyDragonfly extends BaseEntity {
         idle.tick();
         if (hit){
             if (enemyDeath.end){
+                
+            	handler.getGalagaState().DragonflyPlace[row][col]=false;
+                handler.getGalagaState().DragonflyCount--;                	
+                
                 remove = true;
                 if (timeAlive < 60*60*2) {
                 	handler.getScoreManager().addGalagaCurrentScore(100);
@@ -183,9 +187,5 @@ public class EnemyDragonfly extends BaseEntity {
             handler.getMusicHandler().playEffect("explosion.wav");
             damageSource.remove = true;
         }
-        if (timeAlive < 60*60*2 && hit == true) { 
-        	handler.getGalagaState().DragonflyPlace[row][col]=false;
-            handler.getGalagaState().DragonflyCount--;
-        }	
     }
         }
